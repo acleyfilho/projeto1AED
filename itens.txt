@@ -1,1 +1,4 @@
-Leite
+﻿Feijão - 2
+Arroz - 3
+Leite - 4
+Café - 2
