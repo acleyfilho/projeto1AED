@@ -1,7 +1,77 @@
-using System;
-
-class MainClass {
-  public static void Main (string[] args) {
-
-  }
+using System;
+using System.IO;
+using System.Text;
+
+class MainClass {
+  public static void Main (string[] args) {
+    
+    //Cadastro da pessoa
+    string nome;
+    string senha;
+    string telefone;
+    string email;
+
+
+    Pessoa teste = new Pessoa();
+
+    Console.WriteLine("Digite seu nome:");
+    nome = Console.ReadLine();
+
+    Console.WriteLine("Digite sua senha:");
+    senha = Console.ReadLine();
+
+    Console.WriteLine("Digite seu telefone:");
+    telefone = Console.ReadLine();
+
+    Console.WriteLine("Digite seu email:");
+    email = Console.ReadLine();
+
+    teste.setNome(nome);
+    teste.setSenha(senha);
+    teste.setTelefone(telefone);
+    teste.setEmail(email);
+
+    Console.WriteLine("\n||||||->SEU CADASTRO<-||||||\n");
+    Console.WriteLine(teste);
+    Console.WriteLine("\n----------------------------");
+
+    //Cadastro dos itens
+    FileStream meuArq = new FileStream("itens.txt", FileMode.Open, FileAccess.Write);
+
+    FileStream meuArq2 = new FileStream("qtdMin.txt", FileMode.Open, FileAccess.Write);
+
+    StreamWriter sw = new StreamWriter(meuArq, Encoding.UTF8);
+
+    StreamWriter sw2 = new StreamWriter(meuArq2, Encoding.UTF8);
+
+    string str = string.Empty;
+    string str2 = string.Empty;
+    string resposta;
+    bool repetir = true;
+    
+    while(repetir == true){
+
+      Console.WriteLine("Deseja cadastrar algum item(S|N)?");
+      resposta = Console.ReadLine();
+
+      if(resposta == "S" || resposta == "s"){
+
+        Console.WriteLine("Escreva o item que deseja:");
+        str = Console.ReadLine();
+        Console.WriteLine("Escreva a quantidade minima que deseja:");
+        str2 = Console.ReadLine();
+        
+        sw.WriteLine(str);
+        sw2.WriteLine(str2);
+        
+      }else{
+        repetir = false;
+      }
+    } 
+
+    sw.Close();
+    meuArq.Close();
+    sw2.Close();
+    meuArq2.Close();
+  }
 }

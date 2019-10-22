@@ -1,8 +1,8 @@
-using System;
-
-public class Armario{
-
-  private string itens;
-  
-  
+using System;
+
+public class Armario{
+
+  private string itens;
+  
+
 }
