@@ -7,7 +7,7 @@ public class Armario{
 
   List<Item> itens = new List<Item>();
 
-  Random randNum = new Random();
+  Sensor sensor = new Sensor();
 
   public void AdicionarItens(){
     
@@ -25,22 +25,52 @@ public class Armario{
       nomeAux = String.Join("", System.Text.RegularExpressions.Regex.Split(str, @"[\d| -]"));
       numeroAux = int.Parse(String.Join("", System.Text.RegularExpressions.Regex.Split(strAux, @"[^\d]")));
 
-      itens.Add(new Item() {nome = nomeAux, qtdMin = numeroAux, qtdAtual = randNum.Next(10)});
+      itens.Add(new Item() {nome = nomeAux, qtdMin = numeroAux, qtdAtual = sensor.leitorArmario()});
     }
     sr.Close();
     meuArq.Close();
   }
 
   public void MostrarLista(){
-    foreach (Item i in itens){
+     foreach (Item i in itens){
 
-      Console.WriteLine(i);
+      string resposta;
+      int qtdMin;
+      int qtdAtual;
+      int qtdDesejada;
+
+      qtdAtual = i.getQtdAtual();
+      qtdMin = i.getQtdMin();
+
+      if(qtdAtual > qtdMin){
+        Console.WriteLine(i);
+      }
+      else{
+        Console.WriteLine(i);
+        Console.WriteLine("Esse item precisa de reposição!");
+        Console.WriteLine("Dejesa comprar esse item(S|N)?");
+        resposta = Console.ReadLine();
+        if(resposta == "S" || resposta == "s"){
+          Console.WriteLine("Digite a quantidade que deseja comprar:");
+          qtdDesejada = int.Parse(Console.ReadLine());
+
+          qtdAtual = qtdAtual + qtdDesejada;
+
+          i.setQtdAtual(qtdAtual);
+
+          Console.WriteLine("Quantidade comprada com sucesso!");
+          Console.WriteLine(i);
+        }
+        else{
+          Console.WriteLine("Esse item não tera reposição!");
+        }
+      }
     }
   }
 
   public void SaidaLista(){
-    Console.WriteLine("\n||||||||->ARMARIO<-||||||||");
+    Console.WriteLine("\n||||||||->ARMARIO<-|||||||||");
     MostrarLista();
-    Console.WriteLine("\n----------------------------");
+    Console.WriteLine("\n--------------------------------");
   }
 }

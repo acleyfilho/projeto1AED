@@ -1,6 +1,17 @@
 using System;
 
 public class Sensor{
-  private string leitor;
+
+  public int leitorArmario(){
+    Random randNum = new Random();
+
+    return randNum.Next(10);
+  }
+
+  public int leitorLixeira(){
+    Random randNum = new Random();
+
+    return randNum.Next(2);
+  }
   
 }
