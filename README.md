@@ -2,18 +2,7 @@
 
 Primeiro Projeto de Análise e Estrutura de dados I
 
-Ideias:
-
-Gerenciador de tempo e tarefas (business)
-
-Disparador de (propaganda via mobile) baseado na localização e proximidade de pessoas..
-
-Aplicativo de controle de pessoas num ônibus (quantidade vaga e quantidade preenchida)
-
-Aplicação de localização e cuidado de cães abandonados....
-(conectado a canis, casas de adoção...)
-
-Sistema de compra de remédios em farmácias..
-
 Programa para controle de estoque residencial
-baseado nos itens da geladeira e da lixeira...
+
+Nosso programa realiza o controle dos itens de seu estoque residencial e automatiza o processo de reposição do seu armário.
+Por meio de sensores nosso programa realiza a verificação dos itens contidos no armário(estoque), e caso a quantidade mínima de determinado item seja atingida, o usuário do sistema será notificado e terá a opção de realizar a compra de reposição desse item.
