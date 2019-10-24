@@ -60,8 +60,8 @@ public class Pessoa{
   }
 
   public void SaidaCadastro(Pessoa cadastrada){
-    Console.WriteLine("\n||||||->SEU CADASTRO<-||||||\n");
+    Console.WriteLine("\n║║║║║║║║║║║║║═>SEU CADASTRO<═║║║║║║║║║║║║║\n");
     Console.WriteLine(cadastrada);
-    Console.WriteLine("\n--------------------------------");
+    Console.WriteLine("\n------------------------------------------");
   }
 }

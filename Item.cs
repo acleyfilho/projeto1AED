@@ -51,22 +51,34 @@ public class Item{
   }
   
   public void EscreverItem(){
+    
+    //FileStream meuArq = new FileStream("itens.txt", FileMode.Open, FileAccess.Write);
 
-    FileStream meuArq = new FileStream("itens.txt", FileMode.Open, FileAccess.Write);
+    StreamWriter sw = new StreamWriter("itens.txt", true);
 
-    StreamWriter sw = new StreamWriter(meuArq, Encoding.UTF8);
+    //StreamWriter sw = new StreamWriter(meuArq, Encoding.UTF8);
 
     string str = string.Empty;
     string str2 = string.Empty;
     string resposta;
     bool repetir = true;
+    int i = 0;
     
     while(repetir == true){
 
-      Console.WriteLine("Deseja cadastrar algum item(S|N)?");
-      resposta = Console.ReadLine();
-
-      if(resposta == "S" || resposta == "s"){
+      if(i == 0){
+        Console.WriteLine("CADASTRO DE ITENS\n");
+        Console.WriteLine("Escreva o item que deseja:");
+        str = Console.ReadLine();
+        Console.WriteLine("Escreva a quantidade minima que deseja:");
+        str2 = Console.ReadLine();
+        
+        sw.WriteLine(str+" - "+str2);
+        i++;
+      }else{
+        Console.WriteLine("Deseja cadastrar mais algum item(S|N)?");
+        resposta = Console.ReadLine();
+        if(resposta == "S" || resposta == "s"){
 
         Console.WriteLine("Escreva o item que deseja:");
         str = Console.ReadLine();
@@ -75,15 +87,15 @@ public class Item{
         
         sw.WriteLine(str+" - "+str2);
         
-      }else{
+       }else{
+        Console.Clear();
         repetir = false;
-      }
-    } 
-
+       }
+      } 
+    }
+     
     sw.Close();
-    meuArq.Close();
+    //meuArq.Close();
   }
-
-  
-    
+   
 }

@@ -24,7 +24,7 @@ public class Armario{
 
       nomeAux = String.Join("", System.Text.RegularExpressions.Regex.Split(str, @"[\d| -]"));
       numeroAux = int.Parse(String.Join("", System.Text.RegularExpressions.Regex.Split(strAux, @"[^\d]")));
-
+      
       itens.Add(new Item() {nome = nomeAux, qtdMin = numeroAux, qtdAtual = sensor.leitorArmario()});
     }
     sr.Close();
@@ -48,7 +48,7 @@ public class Armario{
       else{
         Console.WriteLine(i);
         Console.WriteLine("Esse item precisa de reposição!");
-        Console.WriteLine("Dejesa comprar esse item(S|N)?");
+        Console.Write("Dejesa comprar esse item(S|N)? ");
         resposta = Console.ReadLine();
         if(resposta == "S" || resposta == "s"){
           Console.WriteLine("Digite a quantidade que deseja comprar:");
@@ -69,8 +69,8 @@ public class Armario{
   }
 
   public void SaidaLista(){
-    Console.WriteLine("\n||||||||->ARMARIO<-|||||||||");
+    Console.WriteLine("\n║║║║║║║║║║║║║═>SEU ARMARIO<═║║║║║║║║║║║║║║");
     MostrarLista();
-    Console.WriteLine("\n--------------------------------");
+    Console.WriteLine("\n------------------------------------------");
   }
 }
