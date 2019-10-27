@@ -33,10 +33,10 @@ class MainClass {
     //Menu
     string menu;
     bool repetir = true;
-    int i = 0;
 
     Armario armario = new Armario();
     Item item = new Item();
+    Lixeira lixeira = new Lixeira();
 
     while(repetir == true){
 
@@ -89,35 +89,34 @@ class MainClass {
         item.EscreverItem();
         break;
 
-        //Lê lista de itens e adciona ao armario
+        //Lê uma lista de itens e adciona ao armario
         case "3":
-        if(i == 0){
-          armario.AdicionarItens();
-          armario.SaidaLista();
-          i++;
-        }else{
-          armario.SaidaLista();
-        }
+        armario.AdicionarItens();
+        armario.SaidaLista();
         break;
 
+        //Simula itens que foram jogados para a lixeira
         case "4":
-        Console.WriteLine("Item para o lixo...");
+        lixeira.SaidaLixeira();
         break;
 
+        //Limpa o console
         case "5":
         Console.Clear();
         break;
 
+        //Sai do programa
         case "6":
         Console.WriteLine("Saindo...");
+        item.DeletarArquivos();
         repetir = false;
         break;
 
+        //Caso não seja nenhuma das opções acima
         default:
         Console.WriteLine("Opção invalida...");
         break;
       }
-    }
-    
+    }  
   }
 }

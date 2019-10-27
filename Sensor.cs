@@ -5,13 +5,13 @@ public class Sensor{
   public int leitorArmario(){
     Random randNum = new Random();
 
-    return randNum.Next(10);
+    return randNum.Next(6,12);
   }
 
   public int leitorLixeira(){
     Random randNum = new Random();
 
-    return randNum.Next(2);
+    return randNum.Next(1,2);
   }
   
 }

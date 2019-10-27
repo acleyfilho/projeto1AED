@@ -8,6 +8,8 @@ public class Item{
   public int qtdMin;
   public int qtdAtual;
 
+  Sensor sensor = new Sensor();
+  
   public Item(){
 
     nome = "Nome";
@@ -47,25 +49,22 @@ public class Item{
   }
 
   public override string ToString(){
-    return "\nItem: " + nome + "\nQuantidade Minima: " + qtdMin + "\nQuantida Atual: " + qtdAtual;
+    return "\nItem: " + nome + "\nQuantidade Minima: " + qtdMin + "\nQuantidade Atual: " + qtdAtual;
   }
   
   public void EscreverItem(){
-    
-    //FileStream meuArq = new FileStream("itens.txt", FileMode.Open, FileAccess.Write);
 
     StreamWriter sw = new StreamWriter("itens.txt", true);
-
-    //StreamWriter sw = new StreamWriter(meuArq, Encoding.UTF8);
+    StreamWriter sw2 = new StreamWriter("qtdAtual.txt", true);
 
     string str = string.Empty;
     string str2 = string.Empty;
     string resposta;
     bool repetir = true;
+    int qtdAtualAux = sensor.leitorArmario();
     int i = 0;
     
     while(repetir == true){
-
       if(i == 0){
         Console.WriteLine("CADASTRO DE ITENS\n");
         Console.WriteLine("Escreva o item que deseja:");
@@ -74,28 +73,31 @@ public class Item{
         str2 = Console.ReadLine();
         
         sw.WriteLine(str+" - "+str2);
+        sw2.WriteLine(qtdAtualAux);
         i++;
       }else{
         Console.WriteLine("Deseja cadastrar mais algum item(S|N)?");
         resposta = Console.ReadLine();
         if(resposta == "S" || resposta == "s"){
-
-        Console.WriteLine("Escreva o item que deseja:");
-        str = Console.ReadLine();
-        Console.WriteLine("Escreva a quantidade minima que deseja:");
-        str2 = Console.ReadLine();
-        
-        sw.WriteLine(str+" - "+str2);
-        
-       }else{
-        Console.Clear();
-        repetir = false;
+          Console.WriteLine("Escreva o item que deseja:");
+          str = Console.ReadLine();
+          Console.WriteLine("Escreva a quantidade minima que deseja:");
+          str2 = Console.ReadLine();
+          
+          sw.WriteLine(str+" - "+str2);
+          sw2.WriteLine(qtdAtualAux);
+        }else{
+         Console.Clear();
+         repetir = false;
        }
       } 
     }
-     
     sw.Close();
-    //meuArq.Close();
+    sw2.Close();
   }
-   
+
+  public void DeletarArquivos(){
+    File.Delete("itens.txt");
+    File.Delete("qtdAtual.txt");
+  }
 }
